@@ -1,17 +1,22 @@
 package com.sinaukoding.librarymanagementsystem_SKPlus_Assesment.service.managementuser.impl;
 
+import com.sinaukoding.librarymanagementsystem_SKPlus_Assesment.builder.CustomBuilder;
+import com.sinaukoding.librarymanagementsystem_SKPlus_Assesment.entity.managementuser.User;
 import com.sinaukoding.librarymanagementsystem_SKPlus_Assesment.mapper.managementuser.UserMapper;
+import com.sinaukoding.librarymanagementsystem_SKPlus_Assesment.model.app.AppPage;
 import com.sinaukoding.librarymanagementsystem_SKPlus_Assesment.model.app.SimpleMap;
 import com.sinaukoding.librarymanagementsystem_SKPlus_Assesment.model.filter.UserFilterRecord;
 import com.sinaukoding.librarymanagementsystem_SKPlus_Assesment.model.request.UserRequestRecord;
 import com.sinaukoding.librarymanagementsystem_SKPlus_Assesment.repository.managementuser.UserRepository;
 import com.sinaukoding.librarymanagementsystem_SKPlus_Assesment.service.managementuser.UserService;
+import com.sinaukoding.librarymanagementsystem_SKPlus_Assesment.util.FilterUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -70,7 +75,27 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Page<SimpleMap> findAll(UserFilterRecord filterRequest, Pageable pageable) {
-        return null;
+        CustomBuilder<User> builder = new CustomBuilder<>();
+
+        FilterUtil.builderConditionNotBlankLike("nama", filterRequest.nama(), builder);
+        FilterUtil.builderConditionNotBlankLike("email", filterRequest.email(), builder);
+        FilterUtil.builderConditionNotBlankLike("username", filterRequest.username(), builder);
+        FilterUtil.builderConditionNotNullEqual("status", filterRequest.status(), builder);
+        FilterUtil.builderConditionNotNullEqual("role", filterRequest.role(), builder);
+
+        Page<User> listUser = userRepository.findAll(builder.build(), pageable);
+        List<SimpleMap> listData = listUser.stream().map(user -> {
+            SimpleMap data = new SimpleMap();
+            data.put("id", user.getId());
+            data.put("nama", user.getNama());
+            data.put("username", user.getUsername());
+            data.put("email", user.getEmail());
+            data.put("role", user.getStatus().getLabel());
+            data.put("status", user.getRole().getLabel());
+            return data;
+        }).toList();
+
+        return AppPage.create(listData, pageable, listUser.getTotalElements());
     }
 
     @Override
