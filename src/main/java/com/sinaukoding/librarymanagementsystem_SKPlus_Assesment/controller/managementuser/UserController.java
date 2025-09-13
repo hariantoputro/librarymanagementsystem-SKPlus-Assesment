@@ -34,6 +34,7 @@ public class UserController {
         return BaseResponse.ok("Data berhasil diubah", null);
     }
 
+
     @PostMapping("find-all")
 //    @PreAuthorize("hasRole('ADMIN')")
     public BaseResponse<?> findAll(@PageableDefault(direction = Sort.Direction.DESC, sort = "modifiedDate") Pageable pageable,

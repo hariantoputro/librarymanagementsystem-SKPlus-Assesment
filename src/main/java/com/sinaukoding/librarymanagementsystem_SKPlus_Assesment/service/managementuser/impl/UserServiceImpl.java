@@ -72,7 +72,6 @@ public class UserServiceImpl implements UserService {
         userRepository.save(user);
     }
 
-
     @Override
     public Page<SimpleMap> findAll(UserFilterRecord filterRequest, Pageable pageable) {
         CustomBuilder<User> builder = new CustomBuilder<>();
