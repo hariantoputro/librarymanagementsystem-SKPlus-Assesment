@@ -38,8 +38,8 @@ public class UserServiceImpl implements UserService {
         var user = userMapper.requestToEntity(request);
 
         user.setCreatedBy("admin");
-        user.setCreatedDate(LocalDateTime.now());
-        user.setModifiedDate(LocalDateTime.now());
+//        user.setCreatedDate(LocalDateTime.now());
+//        user.setModifiedDate(LocalDateTime.now());
         user.setPassword(request.password());
 //        user.setPassword(passwordEncoder.encode(request.password()));
         userRepository.save(user);
@@ -47,7 +47,24 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void edit(UserRequestRecord request) {
+        // validasi mandatory
+        validasiMandatory(request);
 
+        var userExisting = userRepository.findById(request.id()).orElseThrow(() ->  new RuntimeException("Data user tidak ditemukan"));
+
+        // validasi data existing
+        if (userRepository.existsByEmailAndIdNot(request.email().toLowerCase(), request.id())) {
+            throw new RuntimeException("Email [" + request.email() + "] sudah digunakan");
+        }
+        if (userRepository.existsByUsernameAndIdNot(request.username().toLowerCase(),  request.id())) {
+            throw new RuntimeException("Username [" + request.username() + "] sudah digunakan");
+        }
+
+        var user = userMapper.requestToEntity(request);
+        user.setId(userExisting.getId());
+        user.setPassword(request.password());
+//        user.setPassword(passwordEncoder.encode(request.password()));
+        userRepository.save(user);
     }
 
 
