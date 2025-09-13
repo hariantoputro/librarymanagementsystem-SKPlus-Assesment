@@ -11,6 +11,8 @@ public interface UserService {
 
     void edit(UserRequestRecord request);
 
+    void hardDelete(String id);
+
     Page<SimpleMap> findAll(UserFilterRecord filterRequest, Pageable pageable);
 
     SimpleMap findById(String id);

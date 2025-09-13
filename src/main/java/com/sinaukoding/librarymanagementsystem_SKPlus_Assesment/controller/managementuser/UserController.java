@@ -46,4 +46,10 @@ public class UserController {
         return BaseResponse.ok(null, userService.findById(id));
     }
 
+    @DeleteMapping("hard-delete/{id}")
+//    @PreAuthorize("hasRole('ADMIN')")
+    public BaseResponse<?> hardDelete(@PathVariable String id) {
+        userService.hardDelete(id);
+        return BaseResponse.ok("Data berhasil dihapus", null);
+    }
 }

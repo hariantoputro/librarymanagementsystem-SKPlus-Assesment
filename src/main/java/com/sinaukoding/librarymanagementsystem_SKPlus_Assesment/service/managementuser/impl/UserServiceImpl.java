@@ -130,4 +130,11 @@ public class UserServiceImpl implements UserService {
             throw new RuntimeException("Role tidak boleh kosong");
         }
     }
+
+    @Override
+    public void hardDelete(String id) {
+        var user = userRepository.findById(id).orElseThrow(() ->  new RuntimeException("Data user tidak ditemukan"));
+        userRepository.deleteById(id);
+//        return "Berhasil menghapus data user";
+    }
 }
