@@ -1,8 +1,6 @@
 package com.sinaukoding.librarymanagementsystem_SKPlus_Assesment.entity.app;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.EntityListeners;
-import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

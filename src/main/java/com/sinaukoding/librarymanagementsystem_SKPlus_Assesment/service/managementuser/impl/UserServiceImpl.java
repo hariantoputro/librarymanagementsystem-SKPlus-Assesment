@@ -132,7 +132,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void hardDelete(String id) {
+    public void delete(String id) {
         var user = userRepository.findById(id).orElseThrow(() ->  new RuntimeException("Data user tidak ditemukan"));
         userRepository.deleteById(id);
 //        return "Berhasil menghapus data user";
