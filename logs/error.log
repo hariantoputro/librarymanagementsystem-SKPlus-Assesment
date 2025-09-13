@@ -1,2 +1,10 @@
 2025-09-13_15:36:42.056 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
 2025-09-13_15:36:42.989 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-09-13_17:35:59.307 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-09-13_17:36:01.564 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2025-09-13_17:36:01.565 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - constraint "ukrycw44p7cruupkosx3ibmj9q3" of relation "m_user" does not exist, skipping
+2025-09-13_17:36:01.571 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2025-09-13_17:36:01.571 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - constraint "ukg3htmq02oxd6h13cjm978n0q9" of relation "m_user" does not exist, skipping
+2025-09-13_17:36:01.579 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2025-09-13_17:36:01.580 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - constraint "ukbrmb54ld0gqstogmb812xw951" of relation "m_user" does not exist, skipping
+2025-09-13_17:36:02.356 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
