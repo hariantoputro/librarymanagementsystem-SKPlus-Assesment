@@ -99,7 +99,15 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public SimpleMap findById(String id) {
-        return null;
+        var user = userRepository.findById(id).orElseThrow(() ->  new RuntimeException("Data user tidak ditemukan"));
+        SimpleMap data = new SimpleMap();
+        data.put("id", user.getId());
+        data.put("nama", user.getNama());
+        data.put("username", user.getUsername());
+        data.put("email", user.getEmail());
+        data.put("status", user.getStatus().getLabel());
+        data.put("role", user.getRole().getLabel());
+        return data;
     }
 
     private void validasiMandatory(UserRequestRecord request) {

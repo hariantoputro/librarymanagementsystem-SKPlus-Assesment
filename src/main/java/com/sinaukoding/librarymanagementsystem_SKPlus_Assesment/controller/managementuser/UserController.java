@@ -8,10 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("user")
@@ -41,4 +38,12 @@ public class UserController {
                                    @RequestBody UserFilterRecord filterRequest) {
         return BaseResponse.ok(null, userService.findAll(filterRequest, pageable));
     }
+
+    @GetMapping("find-by-id/{id}")
+//    @PreAuthorize("hasRole('ADMIN')")
+    public BaseResponse<?> findById(@PathVariable String id) {
+
+        return BaseResponse.ok(null, userService.findById(id));
+    }
+
 }
