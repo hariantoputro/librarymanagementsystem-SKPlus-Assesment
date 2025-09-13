@@ -11,16 +11,20 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
     private final UserMapper userMapper;
+//    private final PasswordEncoder passwordEncoder;
+
 
     @Override
     public void add(UserRequestRecord request) {
-// validasi mandatory
+        // validasi mandatory
         validasiMandatory(request);
 
         // validasi data existing
@@ -32,6 +36,11 @@ public class UserServiceImpl implements UserService {
         }
 
         var user = userMapper.requestToEntity(request);
+
+        user.setCreatedBy("admin");
+        user.setCreatedDate(LocalDateTime.now());
+        user.setModifiedDate(LocalDateTime.now());
+        user.setPassword(request.password());
 //        user.setPassword(passwordEncoder.encode(request.password()));
         userRepository.save(user);
     }
