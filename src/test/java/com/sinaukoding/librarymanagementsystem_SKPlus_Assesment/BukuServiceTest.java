@@ -39,7 +39,7 @@ class BukuServiceTest {
     @Test
     void testAddBuku_Success(){
         Set<String> listImage = new HashSet<>();
-        listImage.add("path1");
+        listImage.add("buku/2025/09/14/1757820615265_le-petite-prince-1.jpeg");
 
         var request = new BukuRequestRecord(null,
                 "Le Petite Prince",
