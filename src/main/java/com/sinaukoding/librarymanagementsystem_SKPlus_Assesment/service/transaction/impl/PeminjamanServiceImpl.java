@@ -109,5 +109,17 @@ public class PeminjamanServiceImpl implements PeminjamanService {
         return AppPage.create(listData, pageable, listPeminjaman.getTotalElements());
     }
 
+    @Override
+    public SimpleMap findById(String id) {
+        var peminjaman = peminjamanRepository.findById(id).orElseThrow(() -> new RuntimeException("Data peminjaman tidak ditemukan"));
 
+        SimpleMap data = new SimpleMap();
+        data.put("id", peminjaman.getId());
+        data.put("user", peminjaman.getUser().getId());
+        data.put("buku", peminjaman.getBuku().getId());
+        data.put("status", peminjaman.getIsReturned().getLabel());
+        data.put("createdDate", peminjaman.getCreatedDate());
+        data.put("modifiedDate", peminjaman.getModifiedDate());
+        return data;
+    }
 }

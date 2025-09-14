@@ -13,5 +13,5 @@ public interface PeminjamanService {
     void pinjamBuku(PeminjamanRequestRecord request);
     void kembaliBuku(PeminjamanRequestRecord request);
     Page<SimpleMap> findAll(PeminjamanFilterRecord filterRequest, Pageable pageable);
-
+    SimpleMap findById(String id);
 }
