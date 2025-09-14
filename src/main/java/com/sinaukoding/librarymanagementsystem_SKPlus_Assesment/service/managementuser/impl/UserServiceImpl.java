@@ -13,6 +13,7 @@ import com.sinaukoding.librarymanagementsystem_SKPlus_Assesment.util.FilterUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -24,7 +25,7 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
     private final UserMapper userMapper;
-//    private final PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
 
 
     @Override
@@ -45,8 +46,8 @@ public class UserServiceImpl implements UserService {
 //        user.setCreatedBy("admin");
 //        user.setCreatedDate(LocalDateTime.now());
 //        user.setModifiedDate(LocalDateTime.now());
-        user.setPassword(request.password());
-//        user.setPassword(passwordEncoder.encode(request.password()));
+//        user.setPassword(request.password());
+        user.setPassword(passwordEncoder.encode(request.password()));
         userRepository.save(user);
     }
 
@@ -67,8 +68,8 @@ public class UserServiceImpl implements UserService {
 
         var user = userMapper.requestToEntity(request);
         user.setId(userExisting.getId());
-        user.setPassword(request.password());
-//        user.setPassword(passwordEncoder.encode(request.password()));
+//        user.setPassword(request.password());
+        user.setPassword(passwordEncoder.encode(request.password()));
         userRepository.save(user);
     }
 
