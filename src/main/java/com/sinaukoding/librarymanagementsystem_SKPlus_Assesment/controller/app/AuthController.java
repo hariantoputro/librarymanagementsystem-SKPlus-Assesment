@@ -4,6 +4,7 @@ import com.sinaukoding.librarymanagementsystem_SKPlus_Assesment.config.UserLogge
 import com.sinaukoding.librarymanagementsystem_SKPlus_Assesment.model.request.LoginRequestRecord;
 import com.sinaukoding.librarymanagementsystem_SKPlus_Assesment.model.response.BaseResponse;
 import com.sinaukoding.librarymanagementsystem_SKPlus_Assesment.service.app.AuthService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("auth")
 @RequiredArgsConstructor
+@Tag(name = "Auth API")
+
 public class AuthController {
 
     private final AuthService authService;
