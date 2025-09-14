@@ -12,9 +12,13 @@ public class BukuMapper {
 
     public Buku requestToEntity(BukuRequestRecord request) {
         Buku buku = Buku.builder()
-                .nama(request.nama().toUpperCase())
+                .judul(request.judul().toUpperCase())
                 .deskripsi(request.deskripsi())
-                .stok(request.stok())
+                .penulis(request.penulis())
+                .penerbit(request.penerbit())
+                .isbn(request.isbn())
+                .tahun(request.tahun())
+                .jumlah(request.jumlah())
                 .status(request.status())
                 .build();
 
