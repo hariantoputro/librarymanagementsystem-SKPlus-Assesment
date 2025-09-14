@@ -17,14 +17,14 @@ public class AuthController {
 
     @PostMapping("login")
     public BaseResponse<?> login(@RequestBody LoginRequestRecord request) {
-        return BaseResponse.ok(null, authService.login(request));
+        return BaseResponse.ok("Berhasil login sebagai "+request.username(), authService.login(request));
     }
 
     @GetMapping("logout")
     public BaseResponse<?> logout(@AuthenticationPrincipal UserLoggedInConfig userLoggedInConfig) {
         var userLoggedIn = userLoggedInConfig.getUser();
         authService.logout(userLoggedIn);
-        return BaseResponse.ok("Berhasil logout", null);
+        return BaseResponse.ok(userLoggedIn.getUsername()+" Berhasil logout", null);
     }
 
 }
