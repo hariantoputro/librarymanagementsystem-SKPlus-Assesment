@@ -4,6 +4,11 @@ import com.sinaukoding.librarymanagementsystem_SKPlus_Assesment.model.filter.Buk
 import com.sinaukoding.librarymanagementsystem_SKPlus_Assesment.model.request.BukuRequestRecord;
 import com.sinaukoding.librarymanagementsystem_SKPlus_Assesment.model.response.BaseResponse;
 import com.sinaukoding.librarymanagementsystem_SKPlus_Assesment.service.master.BukuService;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.Parameters;
+import io.swagger.v3.oas.annotations.enums.ParameterIn;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -14,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("buku")
 @RequiredArgsConstructor
-//@Tag(name = "Buku API")
+@Tag(name = "Buku API")
 public class BukuController {
 
     private final BukuService bukuService;
@@ -34,11 +39,11 @@ public class BukuController {
     }
 
     @PostMapping("find-all")
-//    @Parameters({
-//            @Parameter(name = "page", description = "Page Number", in = ParameterIn.QUERY, schema = @Schema(type = "integer", defaultValue = "0"), required = true),
-//            @Parameter(name = "size", description = "Size Per Page", in = ParameterIn.QUERY, schema = @Schema(type = "integer", defaultValue = "10"), required = true),
-//            @Parameter(name = "sort", description = "Sorting Data", in = ParameterIn.QUERY, schema = @Schema(type = "string", defaultValue = "modifiedDate,desc"), required = true)
-//    })
+    @Parameters({
+            @Parameter(name = "page", description = "Page Number", in = ParameterIn.QUERY, schema = @Schema(type = "integer", defaultValue = "0"), required = true),
+            @Parameter(name = "size", description = "Size Per Page", in = ParameterIn.QUERY, schema = @Schema(type = "integer", defaultValue = "10"), required = true),
+            @Parameter(name = "sort", description = "Sorting Data", in = ParameterIn.QUERY, schema = @Schema(type = "string", defaultValue = "modifiedDate,desc"), required = true)
+    })
     public BaseResponse<?> findAll(@PageableDefault(direction = Sort.Direction.DESC, sort = "modifiedDate") Pageable pageable,
                                    @RequestBody BukuFilterRecord filterRequest) {
         return BaseResponse.ok(null, bukuService.findAll(filterRequest, pageable));
