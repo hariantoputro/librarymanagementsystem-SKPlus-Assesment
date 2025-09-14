@@ -8,3 +8,5 @@ CREATE USER lms_user WITH PASSWORD 'lms123';
 CREATE DATABASE lmsdb OWNER lms_user;
 GRANT ALL PRIVILEGES ON DATABASE lmsdb TO lms_user;
 ```
+## Flow Chart Peminjaman Buku
+
