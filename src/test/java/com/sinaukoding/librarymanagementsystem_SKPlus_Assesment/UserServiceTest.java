@@ -6,9 +6,11 @@ import com.sinaukoding.librarymanagementsystem_SKPlus_Assesment.model.request.Us
 import com.sinaukoding.librarymanagementsystem_SKPlus_Assesment.service.managementuser.UserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@SpringBootTest
 class UserServiceTest {
 
     @Autowired

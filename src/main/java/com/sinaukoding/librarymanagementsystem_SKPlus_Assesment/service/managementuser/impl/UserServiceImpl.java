@@ -42,7 +42,7 @@ public class UserServiceImpl implements UserService {
 
         var user = userMapper.requestToEntity(request);
 
-        user.setCreatedBy("admin");
+//        user.setCreatedBy("admin");
 //        user.setCreatedDate(LocalDateTime.now());
 //        user.setModifiedDate(LocalDateTime.now());
         user.setPassword(request.password());
