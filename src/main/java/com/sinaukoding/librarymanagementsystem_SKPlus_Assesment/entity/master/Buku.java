@@ -21,7 +21,11 @@ import java.util.Set;
         @Index(name = "idx_buku_created_date", columnList = "createdDate"),
         @Index(name = "idx_buku_modified_date", columnList = "modifiedDate"),
         @Index(name = "idx_buku_status", columnList = "status"),
-        @Index(name = "idx_buku_nama", columnList = "nama")
+        @Index(name = "idx_buku_judul", columnList = "judul"),
+        @Index(name = "idx_buku_penulis", columnList = "penulis"),
+        @Index(name = "idx_buku_penerbit", columnList = "penerbit"),
+        @Index(name = "idx_buku_tahun", columnList = "tahun"),
+        @Index(name = "idx_buku_isbn", columnList = "isbn")
 })
 public class Buku extends BaseEntity {
 
@@ -31,14 +35,29 @@ public class Buku extends BaseEntity {
 
     @Size(max = 100, message = "Max karakter 100")
     @Column(nullable = false)
-    private String nama;
+    private String judul;
 
     @Column(columnDefinition = "TEXT", nullable = false)
     private String deskripsi;
 
-    @Min(value = 0, message = "Stok tidak boleh negatif")
+    @Size(max = 100, message = "Max karakter 100")
     @Column(nullable = false)
-    private Integer stok;
+    private String penulis;
+
+    @Size(max = 100, message = "Max karakter 100")
+    @Column(nullable = false)
+    private String penerbit;
+
+    @Column(nullable = false)
+    private String isbn;
+
+    @Min(value = 0, message = "Tahun tidak boleh negatif")
+    @Column(nullable = false)
+    private Integer tahun;
+
+    @Min(value = 0, message = "Jumlah tidak boleh negatif")
+    @Column(nullable = false)
+    private Integer jumlah;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
