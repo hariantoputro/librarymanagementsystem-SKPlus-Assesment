@@ -2,16 +2,16 @@ package com.sinaukoding.librarymanagementsystem_SKPlus_Assesment.entity.manageme
 
 
 import com.sinaukoding.librarymanagementsystem_SKPlus_Assesment.entity.app.BaseEntity;
+import com.sinaukoding.librarymanagementsystem_SKPlus_Assesment.entity.transaction.Peminjaman;
 import com.sinaukoding.librarymanagementsystem_SKPlus_Assesment.model.enums.Role;
 import com.sinaukoding.librarymanagementsystem_SKPlus_Assesment.model.enums.Status;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
