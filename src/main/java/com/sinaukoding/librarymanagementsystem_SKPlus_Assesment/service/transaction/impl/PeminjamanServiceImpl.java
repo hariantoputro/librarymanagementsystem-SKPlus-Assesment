@@ -1,10 +1,7 @@
 package com.sinaukoding.librarymanagementsystem_SKPlus_Assesment.service.transaction.impl;
 
-import com.sinaukoding.librarymanagementsystem_SKPlus_Assesment.mapper.master.BukuMapper;
 import com.sinaukoding.librarymanagementsystem_SKPlus_Assesment.mapper.transaction.PeminjamanMapper;
 import com.sinaukoding.librarymanagementsystem_SKPlus_Assesment.model.enums.IsReturned;
-import com.sinaukoding.librarymanagementsystem_SKPlus_Assesment.model.enums.Status;
-import com.sinaukoding.librarymanagementsystem_SKPlus_Assesment.model.request.BukuRequestRecord;
 import com.sinaukoding.librarymanagementsystem_SKPlus_Assesment.model.request.PeminjamanRequestRecord;
 import com.sinaukoding.librarymanagementsystem_SKPlus_Assesment.repository.managementuser.UserRepository;
 import com.sinaukoding.librarymanagementsystem_SKPlus_Assesment.repository.master.BukuRepository;
@@ -55,7 +52,12 @@ public class PeminjamanServiceImpl implements PeminjamanService {
 
         var peminjamanExisting = peminjamanRepository.findByParamIdUserAndParamIdBuku(request.idUser(), request.idBuku());
         if (peminjamanExisting != null) {
+//            var buku = bukuRepository.findById(request.idBuku());
+//            var user = userRepository.findById(request.idUser());
             var peminjaman = peminjamanMapper.requestToEntity(request);
+            peminjaman.setId(peminjamanExisting.getId());
+            peminjaman.setBuku(peminjamanExisting.getBuku());
+            peminjaman.setUser(peminjamanExisting.getUser());
             peminjaman.setIsReturned(IsReturned.SUDAH);
             peminjamanRepository.save(peminjaman);
         }else{
