@@ -42,9 +42,15 @@ class BukuServiceTest {
         listImage.add("path1");
 
         var request = new BukuRequestRecord(null,
-                "La Tahzan",
-                "La Tahzan(Jangan Bersedih)",
-                3, Status.AKTIF,listImage);
+                "Le Petite Prince",
+                "Pangeran Kecil",
+                "Penulis 1",
+                "Penerbit 1",
+                "1111-1111-1111-1111",
+                2000,
+                3,
+                Status.AKTIF,
+                listImage);
 
         var bukuEntity = new Buku();
         when(bukuMapper.requestToEntity(request)).thenReturn(bukuEntity);
