@@ -3,8 +3,13 @@ package com.sinaukoding.librarymanagementsystem_SKPlus_Assesment.model.filter;
 import com.sinaukoding.librarymanagementsystem_SKPlus_Assesment.model.enums.Status;
 
 public record BukuFilterRecord(
-        String nama,
+        String judul,
+        String penulis,
+        String penerbit,
+        String isbn,
         Status status,
-        Integer stok
+        Integer jumlah,
+        Integer tahunMin,
+        Integer tahunMax
 ) {
 }
