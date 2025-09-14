@@ -1,6 +1,7 @@
 package com.sinaukoding.librarymanagementsystem_SKPlus_Assesment.entity.master;
 
 import com.sinaukoding.librarymanagementsystem_SKPlus_Assesment.entity.app.BaseEntity;
+import com.sinaukoding.librarymanagementsystem_SKPlus_Assesment.entity.transaction.Peminjaman;
 import com.sinaukoding.librarymanagementsystem_SKPlus_Assesment.model.enums.Status;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
