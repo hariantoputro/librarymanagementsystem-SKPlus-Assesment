@@ -10,3 +10,4 @@ GRANT ALL PRIVILEGES ON DATABASE lmsdb TO lms_user;
 ```
 ## Flow Chart Peminjaman Buku
 
+<img src="https://github.com/hariantoputro/librarymanagementsystem-SKPlus-Assesment/blob/main/flowchart-lms.png"/>
