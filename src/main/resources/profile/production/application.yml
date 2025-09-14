@@ -30,3 +30,11 @@ app:
 logging:
   level:
     com.sinaukoding.librarymanagementsystem_SKPlus_Assesment: ERROR
+
+springdoc:
+  api-docs:
+    defaultModelsExpandDepth: -1
+    docExpansion: none
+    enabled: false
+    tagsSorter: alpha
+    operationsSorter: alpha
