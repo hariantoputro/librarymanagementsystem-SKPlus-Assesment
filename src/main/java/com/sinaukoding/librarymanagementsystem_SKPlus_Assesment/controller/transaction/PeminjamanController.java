@@ -27,10 +27,18 @@ public class PeminjamanController {
             peminjamanService.pinjamBuku(request);
             return BaseResponse.ok("Data berhasil disimpan", null);
         } catch (Exception e) {
-            // You can use a more specific exception like PeminjamanException if needed
             return BaseResponse.error("Gagal meminjam buku: " + e.getMessage(), null);
         }
-//        peminjamanService.pinjamBuku(request);
-//        return BaseResponse.ok("Data berhasil disimpan", null);
+    }
+
+    @PostMapping("kembali-buku")
+    @PreAuthorize("hasRole('ADMIN')")
+    public BaseResponse<?> edit(@RequestBody PeminjamanRequestRecord request) {
+        try {
+            peminjamanService.kembaliBuku(request);
+            return BaseResponse.ok("Data pengembalian disimpan", null);
+        } catch (Exception e) {
+            return BaseResponse.error("Gagal mengembalikan buku: " + e.getMessage(), null);
+        }
     }
 }

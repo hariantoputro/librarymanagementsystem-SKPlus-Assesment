@@ -51,17 +51,18 @@ public class PeminjamanServiceImpl implements PeminjamanService {
 
     @Override
     public void kembaliBuku(PeminjamanRequestRecord request) {
+        validatorService.validator(request);
+
+        var peminjamanExisting = peminjamanRepository.findByParamIdUserAndParamIdBuku(request.idUser(), request.idBuku());
+        if (peminjamanExisting != null) {
+            var peminjaman = peminjamanMapper.requestToEntity(request);
+            peminjaman.setIsReturned(IsReturned.SUDAH);
+            peminjamanRepository.save(peminjaman);
+        }else{
+            throw new RuntimeException("User dan Buku tidak ditemukan");
+        }
 
     }
 
-//    @Override
-//    public void kembaliBuku(BukuRequestRecord request) {
-//        // validator mandatory
-//        validatorService.validator(request);
-//
-//        var peminjamanExist = peminjamanRepository.findByIdUserAndIdBuku(request.id()).orElseThrow(() -> new RuntimeException("Buku tidak ditemukan"));
-//        var buku = bukuMapper.requestToEntity(request);
-//        buku.setId(bukuExisting.getId());
-//        bukuRepository.save(buku);
-//    }
+
 }

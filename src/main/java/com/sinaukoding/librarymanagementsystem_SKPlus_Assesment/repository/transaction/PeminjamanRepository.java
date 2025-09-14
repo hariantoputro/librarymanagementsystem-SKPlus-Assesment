@@ -6,6 +6,6 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 
 public interface PeminjamanRepository extends JpaRepository<Peminjaman, String>, JpaSpecificationExecutor<Peminjaman> {
-    @Query(nativeQuery = true, value = "select * from t_peminjaman p where isReturned = SUDAH and id_user = :paramIdUser and id_buku <> :paramIdBuku")
+    @Query(nativeQuery = true, value = "select * from t_peminjaman p where is_returned = 'BELUM' and id_user = :paramIdUser and id_buku <> :paramIdBuku")
     Peminjaman findByParamIdUserAndParamIdBuku(String paramIdUser, String paramIdBuku);
 }
