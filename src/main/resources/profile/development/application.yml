@@ -26,3 +26,7 @@ spring:
 app:
   upload-directory: lms-uploads
   folder-temp: ./lms-temp/
+
+logging:
+  level:
+    com.sinaukoding.librarymanagementsystem_SKPlus_Assesment: TRACE
